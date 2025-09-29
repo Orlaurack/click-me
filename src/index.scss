@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: #111;
+  background: linear-gradient(#051d1d, #111);
   color: #fff;
   font-family: sans-serif;
   display: flex;
@@ -9,43 +9,45 @@ body {
   height: 100vh;
 }
 
-.volume-control{
+.top-bar{
   position: fixed;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  inset: 10px 10px auto;
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
 
-  button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    width: 40px;
+  .volume-control{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  
+    button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 40px;
+    }
+  
+    input[type="range"] {
+      width: 100px;
+    }
   }
-
-  input[type="range"] {
-    width: 100px;
+  
+  .user-count{
+    .icon{
+      font-size: 1.5rem;
+    }
   }
-}
-
-.user-count{
-  position: fixed;
-  right: 10px;
-  top: 10px;
-  .icon{
-    font-size: 1.5rem;
+  
+  .system-message{
+    text-align: center;
   }
-}
-
-.system-message{
-  position: fixed;
-  top: 10px;
-  left: 200px;
-  right: 200px;
-  text-align: center;
 }
 
 .animation-container {
@@ -64,10 +66,9 @@ body {
     transition: 600ms ease transform;
   
     img{
-      
       animation: pop 800ms ease forwards;
-      width: 50vw;
-      height: auto
+      width: min(50vw, 50vh, 800px);
+      height: auto;
     }
   }
 }

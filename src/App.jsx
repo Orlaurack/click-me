@@ -87,30 +87,32 @@ export default function App() {
 
 	return (
 		<>
-			<div className="volume-control">
-				<button onClick={() => setMuted(!muted)}>
-					{muted||volume == 0 ? '🔈' : (volume < 0.5 ? '🔉' : '🔊')}
-				</button>
-				<input
-					type="range"
-					min="0"
-					max="100"
-					disabled={muted}
-					value={volume * 100}
-					onChange={(e) => {setMuted(false); setVolume(Number(e.target.value) / 100)}}
-				/>
-				{muted ? '0' : Math.round(100*volume)}
-			</div>
-
-			<div className="user-count">
-				<span className="icon">👥</span> {userCount} connecté{userCount > 1 ? "s" : ""}
-			</div>
-
-			{systemMessage && (
-				<div className={`system-message ${systemMessage.type}`}>
-					{systemMessage.text}
+			<div className="top-bar">
+				<div className="volume-control">
+					<button onClick={() => setMuted(!muted)}>
+						{muted||volume == 0 ? '🔈' : (volume < 0.5 ? '🔉' : '🔊')}
+					</button>
+					<input
+						type="range"
+						min="0"
+						max="100"
+						disabled={muted}
+						value={volume * 100}
+						onChange={(e) => {setMuted(false); setVolume(Number(e.target.value) / 100)}}
+					/>
+					{muted ? '0' : Math.round(100*volume)}
 				</div>
-			)}
+
+				{systemMessage && (
+					<div className={`system-message ${systemMessage.type}`}>
+						{systemMessage.text}
+					</div>
+				)}
+
+				<div className="user-count">
+					<span className="icon">👥</span> {userCount} connecté{userCount > 1 ? "s" : ""}
+				</div>
+			</div>
 
 			<div className="animation-container">
 				{animations.map((animation) => (
